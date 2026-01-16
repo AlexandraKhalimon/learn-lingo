@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header/Header';
+import TanStackProvider from '@/components/TanStackProvider/TanStackProvider.jsx';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -46,8 +47,10 @@ export default function RootLayout({
       </head>
 
       <body className={`${roboto.variable}`}>
-        <Header />
-        {children}
+        <TanStackProvider>
+          <Header />
+          {children}
+        </TanStackProvider>
       </body>
     </html>
   );
