@@ -1,4 +1,5 @@
 'use client';
+import css from './page.module.css';
 import TeachersCard from '@/components/TeacherCard/TeacherCard';
 import { fetchTeachers } from '@/lib/api';
 import { useQuery } from '@tanstack/react-query';
@@ -20,11 +21,11 @@ export default function TeachersClient() {
   }
 
   return (
-    <section>
+    <section className={css.section}>
       {!data ? (
         <p>Not found</p>
       ) : (
-        <ul>
+        <ul className={css.list}>
           {data.map(
             (
               teacher,

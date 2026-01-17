@@ -10,17 +10,19 @@ export default function TeachersCard({ teacher }: Props) {
     <div className={css.card}>
       <div className={css.avatar}></div>
       <div className={css.info}>
-        <div>
+        <div className={css.about}>
           <div>
             <div className={css.header}>
               <div className={css.name}>
                 <p>Languages</p>
-                <h3>{teacher.name}</h3>
+                <h3>
+                  {teacher.name} {teacher.surname}
+                </h3>
               </div>
               <div className={css.infoBar}>
                 <ul className={css.stats}>
                   <li>
-                    <svg width={16} height={16}>
+                    <svg width={16} height={16} className={css.icon}>
                       <use href="/icons.svg#icon-book"></use>
                     </svg>
                     <p>Lessons online</p>
@@ -29,14 +31,14 @@ export default function TeachersCard({ teacher }: Props) {
                     <p>Lessons done: {teacher.lessons_done}</p>
                   </li>
                   <li>
-                    <svg width={16} height={16}>
-                      <use href="/icons.svg#icon-gold-star"></use>
+                    <svg width={16} height={16} className={css.icon}>
+                      <use href="/icons.svg#icon-star"></use>
                     </svg>
                     <p>Rating: {teacher.rating}</p>
                   </li>
                   <li>
                     <p>
-                      Price / 1 hour: <span>{teacher.price_per_hour}</span>
+                      Price / 1 hour: <span>{teacher.price_per_hour}$</span>
                     </p>
                   </li>
                 </ul>
@@ -49,19 +51,34 @@ export default function TeachersCard({ teacher }: Props) {
             </div>
             <ul className={css.details}>
               <li>
-                <p>Speaks: {teacher.languages}</p>
+                <p>
+                  <span>Speaks: </span>
+                  <span className={css.underlined}>
+                    {teacher.languages.join(', ')}
+                  </span>
+                </p>
               </li>
               <li>
-                <p>Lesson Info: {teacher.lesson_info}</p>
+                <p>
+                  <span>Lesson Info: </span>
+                  {teacher.lesson_info}
+                </p>
               </li>
               <li>
-                <p>Conditions: {teacher.conditions} </p>
+                <p>
+                  <span>Conditions: </span>
+                  {teacher.conditions}{' '}
+                </p>
               </li>
             </ul>
           </div>
-          <button>Read more</button>
+          <button className={css.readMore}>Read more</button>
         </div>
-        <ul className={css.levels}>{teacher.levels}</ul>
+        <ul className={css.levels}>
+          {teacher.levels.map((level, index) => (
+            <li key={index}>#{level}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );

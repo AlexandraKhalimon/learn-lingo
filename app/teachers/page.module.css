@@ -1,0 +1,10 @@
+.section {
+  background-color: #f8f8f8;
+  padding: 96px 128px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 53px;
+}

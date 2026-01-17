@@ -10,7 +10,7 @@
     <symbol id="icon-heart" viewBox="0 0 32 32">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.462" d="M27.787 6.147a7.35 7.35 0 0 0-5.187-2.15 7.33 7.33 0 0 0-5.187 2.15L16 7.56l-1.413-1.413a7.333 7.333 0 0 0-10.374 0 7.333 7.333 0 0 0 0 10.374L16 28.308l11.787-11.787a7.326 7.326 0 0 0 0-10.373z"/>
     </symbol>
-    <symbol id="icon-gold-star" viewBox="0 0 32 32">
+    <symbol id="icon-gold-heart" viewBox="0 0 32 32">
       <path fill="#f4c550" stroke="#f4c550" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.231" d="M27.787 6.147a7.326 7.326 0 0 0-10.373 0L16.001 7.56l-1.413-1.413a7.333 7.333 0 0 0-10.374 0 7.333 7.333 0 0 0 0 10.374l11.787 11.787 11.787-11.787a7.326 7.326 0 0 0 0-10.373z" style="fill:var(--color3, #f4c550);stroke:var(--color3, #f4c550)"/>
     </symbol>
     <symbol id="icon-log-in" viewBox="0 0 32 32">
