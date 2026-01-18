@@ -1,12 +1,22 @@
+'use client';
+
 import Image from 'next/image';
 import css from './TeacherCard.module.css';
 import { Teacher } from '@/types/teacher';
+import { useState } from 'react';
+import ReadMore from '../ReadMore/ReadMore';
 
 interface Props {
   teacher: Teacher;
 }
 
 export default function TeachersCard({ teacher }: Props) {
+  const [isReadMore, setIsReadMore] = useState(false);
+
+  const handleReadMore = () => {
+    setIsReadMore(!isReadMore);
+  };
+
   return (
     <div className={css.card}>
       <div className={css.avatar}>
@@ -84,7 +94,13 @@ export default function TeachersCard({ teacher }: Props) {
               </li>
             </ul>
           </div>
-          <button className={css.readMore}>Read more</button>
+          {isReadMore ? (
+            <ReadMore teacher={teacher} reviews={teacher.reviews} />
+          ) : (
+            <button className={css.readMore} onClick={handleReadMore}>
+              Read more
+            </button>
+          )}
         </div>
         <ul className={css.levels}>
           {teacher.levels.map((level, index) => (
