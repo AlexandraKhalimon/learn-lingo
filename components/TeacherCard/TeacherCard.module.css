@@ -74,6 +74,8 @@
 
 .stats .icon {
   margin-right: 8px;
+  fill: none;
+  stroke: #000;
 }
 
 .stats > li:not(:last-child)::after {
@@ -91,6 +93,8 @@
 
 .favorite {
   background-color: transparent;
+  fill: none;
+  stroke: #000;
 }
 
 .details {
