@@ -25,18 +25,21 @@ export default function TeachersClient() {
       {!data ? (
         <p>Not found</p>
       ) : (
-        <ul className={css.list}>
-          {data.map(
-            (
-              teacher,
-              index, // змінити key
-            ) => (
-              <li key={index}>
-                <TeachersCard teacher={teacher} />
-              </li>
-            ),
-          )}
-        </ul>
+        <>
+          <ul className={css.list}>
+            {data.map(
+              (
+                teacher,
+                index, // змінити key
+              ) => (
+                <li key={index}>
+                  <TeachersCard teacher={teacher} />
+                </li>
+              ),
+            )}
+          </ul>
+          <button className={css.button}>Load more</button>
+        </>
       )}
     </section>
   );
