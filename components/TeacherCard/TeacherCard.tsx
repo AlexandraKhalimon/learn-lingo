@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import css from './TeacherCard.module.css';
 import { Teacher } from '@/types/teacher';
 
@@ -8,7 +9,18 @@ interface Props {
 export default function TeachersCard({ teacher }: Props) {
   return (
     <div className={css.card}>
-      <div className={css.avatar}></div>
+      <div className={css.avatar}>
+        <Image
+          src={teacher.avatar_url}
+          alt="Teacher photo"
+          width={96}
+          height={96}
+          className={css.img}
+        />
+        <svg width={12} height={12} className={css.icon}>
+          <use href="/icons.svg#icon-green-dot"></use>
+        </svg>
+      </div>
       <div className={css.info}>
         <div className={css.about}>
           <div>
