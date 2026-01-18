@@ -1,0 +1,56 @@
+.experience {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--foreground);
+  margin-bottom: 32px;
+  width: 968px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.reviewer {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.img {
+  border-radius: 100px;
+}
+
+.reviewHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.reviewHeader > h4 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #8a8a89;
+}
+
+.rating {
+  display: flex;
+  gap: 8px;
+}
+
+.rating > p {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: var(--foreground);
+}
+
+.text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--foreground);
+}

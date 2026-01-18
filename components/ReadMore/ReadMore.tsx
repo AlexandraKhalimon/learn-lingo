@@ -11,18 +11,19 @@ export default function ReadMore({ teacher, reviews }: Props) {
   return (
     <>
       <p className={css.experience}>{teacher.experience}</p>
-      <ul>
+      <ul className={css.list}>
         {reviews.map((review, index) => (
-          <li key={index} className={css.comment}>
+          <li key={index}>
             <div className={css.reviewer}>
               <Image
                 src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
                 alt="User image"
                 width={44}
                 height={44}
+                className={css.img}
               />
               <div className={css.reviewHeader}>
-                <h6>{review.reviewer_name}</h6>
+                <h4>{review.reviewer_name}</h4>
                 <div className={css.rating}>
                   <svg width={16} height={16}>
                     <use href="/icons.svg#icon-star"></use>
@@ -31,7 +32,7 @@ export default function ReadMore({ teacher, reviews }: Props) {
                 </div>
               </div>
             </div>
-            <p className={css.comment}>{review.comment}</p>
+            <p className={css.text}>{review.comment}</p>
           </li>
         ))}
       </ul>

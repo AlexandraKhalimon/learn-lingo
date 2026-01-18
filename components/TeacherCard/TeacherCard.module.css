@@ -2,7 +2,7 @@
   border-radius: 24px;
   padding: 24px;
   width: 1184px;
-  height: 328px;
+  height: auto;
   background-color: #fff;
   display: flex;
 }
