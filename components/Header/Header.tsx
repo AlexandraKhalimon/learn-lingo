@@ -5,10 +5,14 @@ import { useState } from 'react';
 import Modal from '../Modal/Modal';
 import RegisterForm from '../RegisterForm/RegisterForm';
 import LoginForm from '../LoginForm/LoginForm';
+import { useAuthStore } from '@/lib/store/authStore';
 
 export default function Header() {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  const user = useAuthStore((state) => state.user);
+  const logout = useAuthStore((state) => state.logout);
 
   return (
     <header className={css.header}>
@@ -31,27 +35,43 @@ export default function Header() {
         </nav>
       </div>
       <div className={css.authorization}>
-        <button className={css.login} onClick={() => setIsLoginOpen(true)}>
-          <svg width={20} height={20}>
-            <use href="/icons.svg#icon-log-in"></use>
-          </svg>
-          <p>Log in</p>
-        </button>
-        {isLoginOpen && (
-          <Modal onClose={() => setIsLoginOpen(false)}>
-            <LoginForm />
-          </Modal>
-        )}
-        <button
-          className={css.registration}
-          onClick={() => setIsRegisterOpen(true)}
-        >
-          Registration
-        </button>
-        {isRegisterOpen && (
-          <Modal onClose={() => setIsRegisterOpen(false)}>
-            <RegisterForm />
-          </Modal>
+        {!user ? (
+          <>
+            <button className={css.login} onClick={() => setIsLoginOpen(true)}>
+              <svg width={20} height={20}>
+                <use href="/icons.svg#icon-log-in"></use>
+              </svg>
+              <p>Log in</p>
+            </button>
+            {isLoginOpen && (
+              <Modal onClose={() => setIsLoginOpen(false)}>
+                <LoginForm />
+              </Modal>
+            )}
+            <button
+              className={css.registration}
+              onClick={() => setIsRegisterOpen(true)}
+            >
+              Registration
+            </button>
+            {isRegisterOpen && (
+              <Modal onClose={() => setIsRegisterOpen(false)}>
+                <RegisterForm />
+              </Modal>
+            )}
+          </>
+        ) : (
+          <>
+            <button className={css.login} onClick={logout}>
+              <svg width={20} height={20}>
+                <use href="/icons.svg#icon-log-in"></use>
+              </svg>
+              <p>Log out</p>
+            </button>
+            <Link href={'/favorites'}>
+              <button className={css.registration}>Favorites</button>
+            </Link>
+          </>
         )}
       </div>
     </header>
