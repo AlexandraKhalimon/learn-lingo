@@ -3,6 +3,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import css from './LoginForm.module.css';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import { useAuthStore } from '@/lib/store/authStore';
+import { loginUser } from '@/lib/api';
 
 const loginSchema = yup.object({
   email: yup
@@ -25,9 +27,27 @@ export default function LoginForm() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<LoginFormValues>({
     resolver: yupResolver(loginSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
   });
+
+  const setUser = useAuthStore((state) => state.setUser);
+
+  const onSubmit = async (data: LoginFormValues) => {
+    const user = await loginUser(data);
+    setUser({
+      idToken: user.idToken,
+      email: user.email,
+      localId: user.localId,
+      displayName: user.displayName,
+    });
+    reset();
+  };
 
   return (
     <>
@@ -38,12 +58,7 @@ export default function LoginForm() {
           continue your search for an teacher.
         </p>
       </div>
-      <form
-        noValidate
-        onSubmit={handleSubmit((data) => {
-          console.log(data);
-        })}
-      >
+      <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <div className={css.form}>
           <label className={css.inputBox}>
             <input
