@@ -35,6 +35,11 @@ export default function RegisterForm() {
     reset,
   } = useForm<RegisterFormValues>({
     resolver: yupResolver(registerSchema),
+    defaultValues: {
+      name: '',
+      email: '',
+      password: '',
+    },
   });
 
   const setUser = useAuthStore((state) => state.setUser);
