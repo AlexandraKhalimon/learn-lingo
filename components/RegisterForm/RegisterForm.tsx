@@ -3,6 +3,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import css from './RegisterForm.module.css';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
+import { registerUser } from '@/lib/api';
+import { useAuthStore } from '@/lib/store/authStore';
 
 const registerSchema = yup.object({
   name: yup
@@ -30,9 +32,27 @@ export default function RegisterForm() {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<RegisterFormValues>({
     resolver: yupResolver(registerSchema),
   });
+
+  const setUser = useAuthStore((state) => state.setUser);
+
+  const onSubmit = async (data: {
+    name: string;
+    email: string;
+    password: string;
+  }) => {
+    const user = await registerUser(data);
+    setUser({
+      idToken: user.idToken,
+      email: user.email,
+      localId: user.localId,
+      displayName: user.displayName || data.name,
+    });
+    reset();
+  };
 
   return (
     <>
@@ -44,12 +64,7 @@ export default function RegisterForm() {
           information
         </p>
       </div>
-      <form
-        noValidate
-        onSubmit={handleSubmit((data) => {
-          console.log(data);
-        })}
-      >
+      <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <div className={css.form}>
           <label className={css.inputBox}>
             <input
