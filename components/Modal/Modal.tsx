@@ -32,7 +32,14 @@ export default function Modal({ onClose, children }: ModalProps) {
 
   return createPortal(
     <div className={css.backdrop} onClick={handleBackdropClick}>
-      <div className={css.modal}>{children}</div>
+      <div className={css.modal}>
+        <button className={css.button} onClick={onClose}>
+          <svg width={32} height={32}>
+            <use href="/icons.svg#icon-x"></use>
+          </svg>
+        </button>
+        {children}
+      </div>
     </div>,
     document.body,
   );

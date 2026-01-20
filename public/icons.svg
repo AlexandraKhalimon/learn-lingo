@@ -23,5 +23,9 @@
       <path fill="#ffda44" d="M16 32c8.837 0 16-7.163 16-16S24.837 0 16 0 0 7.163 0 16s7.163 16 16 16" style="fill:var(--color6, #ffda44)"/>
       <path fill="#338af3" d="M0 16C0 7.164 7.163 0 16 0s16 7.163 16 16z" style="fill:var(--color7, #338af3)"/>
     </symbol>
+    <symbol id="icon-x" viewBox="0 0 32 32">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M24 8 8 24M8 8l16 16"/>
+    </symbol>
+
   </defs>
 </svg>
