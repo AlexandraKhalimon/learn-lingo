@@ -7,6 +7,9 @@ import { useState } from 'react';
 import ReadMore from '../ReadMore/ReadMore';
 import Modal from '../Modal/Modal';
 import BookingForm from '../BookingForm/BookingForm';
+import { useFavoritesStore } from '@/lib/store/favoritesStore';
+import { useAuthStore } from '@/lib/store/authStore';
+import toast, { Toaster } from 'react-hot-toast';
 
 interface Props {
   teacher: Teacher;
@@ -16,12 +19,27 @@ export default function TeachersCard({ teacher }: Props) {
   const [isReadMore, setIsReadMore] = useState(false);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
+  const { favorites, setFavorite } = useFavoritesStore();
+  const isFavorite = favorites.includes(teacher.id);
+  const user = useAuthStore((state) => state.user);
+
   const handleReadMore = () => {
     setIsReadMore(!isReadMore);
   };
 
+  const handleFavorite = () => {
+    if (!user) {
+      toast.error(
+        'You need to log in or register to add a teacher to your favorites',
+      );
+      return;
+    }
+    setFavorite(teacher.id);
+  };
+
   return (
     <div className={css.card}>
+      <Toaster position="top-right" reverseOrder={false} />
       <div className={css.avatar}>
         <Image
           src={teacher.avatar_url}
@@ -67,9 +85,15 @@ export default function TeachersCard({ teacher }: Props) {
                     </p>
                   </li>
                 </ul>
-                <button className={css.favorite}>
+                <button className={css.favorite} onClick={handleFavorite}>
                   <svg width={26} height={26}>
-                    <use href="/icons.svg#icon-heart"></use>
+                    <use
+                      href={
+                        isFavorite
+                          ? '/icons.svg#icon-gold-heart'
+                          : '/icons.svg#icon-heart'
+                      }
+                    ></use>
                   </svg>
                 </button>
               </div>
