@@ -5,6 +5,8 @@ import css from './TeacherCard.module.css';
 import { Teacher } from '@/types/teacher';
 import { useState } from 'react';
 import ReadMore from '../ReadMore/ReadMore';
+import Modal from '../Modal/Modal';
+import BookingForm from '../BookingForm/BookingForm';
 
 interface Props {
   teacher: Teacher;
@@ -12,6 +14,7 @@ interface Props {
 
 export default function TeachersCard({ teacher }: Props) {
   const [isReadMore, setIsReadMore] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   const handleReadMore = () => {
     setIsReadMore(!isReadMore);
@@ -107,6 +110,19 @@ export default function TeachersCard({ teacher }: Props) {
             <li key={index}>#{level}</li>
           ))}
         </ul>
+        {isReadMore && (
+          <button
+            className={css.booking}
+            onClick={() => setIsBookingOpen(true)}
+          >
+            Book trial lesson
+          </button>
+        )}
+        {isBookingOpen && (
+          <Modal onClose={() => setIsBookingOpen(false)}>
+            <BookingForm />
+          </Modal>
+        )}
       </div>
     </div>
   );

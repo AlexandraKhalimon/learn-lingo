@@ -147,3 +147,21 @@
   line-height: 114%;
   color: var(--foreground);
 }
+
+.booking {
+  border-radius: 12px;
+  padding: 16px 48px;
+  width: 232px;
+  height: 60px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 156%;
+  color: var(--foreground);
+  background-color: #9fb7ce;
+  margin-top: 32px;
+}
+
+.booking:hover,
+.booking:focus {
+  background-color: #bfd6ea;
+}
