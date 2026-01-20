@@ -44,19 +44,25 @@ export default function LoginForm() {
           console.log(data);
         })}
       >
-        <input
-          {...register('email')}
-          className={css.input}
-          placeholder="Email"
-        />
-        <p className={css.error}>{errors.email?.message}</p>
-        <input
-          {...register('password')}
-          className={css.input}
-          type="password"
-          placeholder="Password"
-        />
-        <p className={css.error}>{errors.password?.message}</p>
+        <div className={css.form}>
+          <label className={css.inputBox}>
+            <input
+              {...register('email')}
+              className={css.input}
+              placeholder="Email"
+            />
+            <p className={css.error}>{errors.email?.message}</p>
+          </label>
+          <label className={css.inputBox}>
+            <input
+              {...register('password')}
+              className={css.input}
+              type="password"
+              placeholder="Password"
+            />
+            <p className={css.error}>{errors.password?.message}</p>
+          </label>
+        </div>
         <button type="submit" className={css.submit}>
           Log In
         </button>
