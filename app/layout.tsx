@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     title: 'LearnLingo',
     description:
       'Learn Lingo — an online platform for learning languages with professional tutors.',
+    url: 'https://learn-lingo-tan.vercel.app/',
     type: 'website',
     images: [
       {
