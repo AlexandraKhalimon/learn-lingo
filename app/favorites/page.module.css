@@ -1,0 +1,27 @@
+.section {
+  background-color: #f8f8f8;
+  padding: 96px 128px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 53px;
+  margin-bottom: 64px;
+}
+
+.message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  background-color: #f0f0f0;
+  padding: 20px 30px;
+  border-radius: 15px;
+  margin: 40px auto;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+}
