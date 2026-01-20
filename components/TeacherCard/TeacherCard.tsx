@@ -120,7 +120,7 @@ export default function TeachersCard({ teacher }: Props) {
         )}
         {isBookingOpen && (
           <Modal onClose={() => setIsBookingOpen(false)}>
-            <BookingForm />
+            <BookingForm teacher={teacher} />
           </Modal>
         )}
       </div>

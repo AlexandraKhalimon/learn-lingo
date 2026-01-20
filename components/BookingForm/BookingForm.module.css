@@ -1,0 +1,107 @@
+.title {
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+}
+
+.text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 138%;
+  color: rgba(18, 20, 23, 0.8);
+  margin-bottom: 20px;
+}
+
+.teacher {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.img {
+  border-radius: 100px;
+}
+
+.name > p {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 133%;
+  color: #8a8a89;
+}
+
+.name > h6 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: var(--foreground);
+}
+
+.question {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--foreground);
+  margin-bottom: 20px;
+}
+
+.radioButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  margin-bottom: 40px;
+}
+
+.radio {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 138%;
+  color: var(--foreground);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form > .inputBox:not(:last-child) {
+  margin-bottom: 18px;
+}
+
+.form .input {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+  padding: 16px 18px;
+  width: 438px;
+  height: 54px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 138%;
+  color: var(--foreground);
+}
+
+.error {
+  color: #d93025;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.button {
+  border-radius: 12px;
+  padding: 16px 215px;
+  width: 472px;
+  height: 60px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 156%;
+  color: var(--foreground);
+  background-color: #9fb7ce;
+  margin-top: 40px;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #bfd6ea;
+}
