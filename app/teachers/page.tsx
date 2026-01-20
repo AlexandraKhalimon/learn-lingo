@@ -10,8 +10,8 @@ export default async function TeachersPage() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ['teachers'],
-    queryFn: () => fetchTeachers(),
+    queryKey: ['teachers', 4],
+    queryFn: () => fetchTeachers({ limit: 4 }),
   });
 
   return (
