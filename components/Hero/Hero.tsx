@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import css from './Hero.module.css';
+import Link from 'next/link';
 
 export default function Hero() {
   return (
@@ -14,7 +15,9 @@ export default function Hero() {
             Elevate your language proficiency to new heights by connecting with
             highly qualified and experienced tutors.
           </p>
-          <button className={css.button}>Get started</button>
+          <Link href={'/teachers'}>
+            <button className={css.button}>Get started</button>
+          </Link>
         </div>
         <Image
           src="/images/hero.png"
