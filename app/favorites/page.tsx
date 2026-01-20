@@ -5,24 +5,19 @@ import { fetchTeachers } from '@/lib/api';
 import { useFavoritesStore } from '@/lib/store/favoritesStore';
 import { Teacher } from '@/types/teacher';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import Loader from '../loading';
 
 export default function Favorites() {
   const favorites = useFavoritesStore((state) => state.favorites);
 
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['teachers'],
     queryFn: () => fetchTeachers({ limit: 30 }),
     placeholderData: keepPreviousData,
   });
 
-  // додати лоадер і помилку
-
   if (isLoading) {
-    return <p>Loading ...</p>;
-  }
-
-  if (error) {
-    return <p>Error ...</p>;
+    return <Loader />;
   }
 
   const favoriteTeachers = data?.filter((teacher: Teacher) =>

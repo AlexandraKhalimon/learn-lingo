@@ -4,27 +4,20 @@ import TeachersCard from '@/components/TeacherCard/TeacherCard';
 import { fetchTeachers } from '@/lib/api';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
+import Loader from '../loading';
 
 export default function TeachersClient() {
   const [limit, setLimit] = useState(4);
 
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['teachers', limit],
     queryFn: () => fetchTeachers({ limit }),
     placeholderData: keepPreviousData,
   });
 
-  // додати лоадер і помилку
-
   if (isLoading) {
-    return <p>Loading ...</p>;
+    return <Loader />;
   }
-
-  if (error) {
-    return <p>Error ...</p>;
-  }
-
-  // console.log(data);
 
   return (
     <section className={css.section}>
