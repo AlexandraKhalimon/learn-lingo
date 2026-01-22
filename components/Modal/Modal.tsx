@@ -5,9 +5,10 @@ import React, { useEffect } from 'react';
 interface ModalProps {
   onClose: () => void;
   children: React.ReactNode;
+  width?: string
 }
 
-export default function Modal({ onClose, children }: ModalProps) {
+export default function Modal({ onClose, children, width }: ModalProps) {
   const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
       onClose();
@@ -32,7 +33,7 @@ export default function Modal({ onClose, children }: ModalProps) {
 
   return createPortal(
     <div className={css.backdrop} onClick={handleBackdropClick}>
-      <div className={css.modal}>
+      <div className={css.modal} style={{width}}>
         <button className={css.button} onClick={onClose}>
           <svg width={32} height={32}>
             <use href="/icons.svg#icon-x"></use>

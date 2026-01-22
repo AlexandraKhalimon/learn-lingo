@@ -44,7 +44,7 @@ export default function Header() {
               <p>Log in</p>
             </button>
             {isLoginOpen && (
-              <Modal onClose={() => setIsLoginOpen(false)}>
+              <Modal onClose={() => setIsLoginOpen(false)} width='566px'>
                 <LoginForm onClose={()=>setIsLoginOpen(false)}/>
               </Modal>
             )}
@@ -55,7 +55,7 @@ export default function Header() {
               Registration
             </button>
             {isRegisterOpen && (
-              <Modal onClose={() => setIsRegisterOpen(false)}>
+              <Modal onClose={() => setIsRegisterOpen(false)} width='566px'>
                 <RegisterForm onClose={()=>setIsRegisterOpen(false)}/>
               </Modal>
             )}

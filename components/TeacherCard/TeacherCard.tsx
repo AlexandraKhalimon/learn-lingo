@@ -142,7 +142,7 @@ export default function TeachersCard({ teacher }: Props) {
           </button>
         )}
         {isBookingOpen && (
-          <Modal onClose={() => setIsBookingOpen(false)}>
+          <Modal onClose={() => setIsBookingOpen(false)} width='600px'>
             <BookingForm teacher={teacher} onClose={()=>setIsBookingOpen(false)}/>
           </Modal>
         )}
