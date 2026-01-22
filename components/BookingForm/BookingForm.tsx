@@ -113,6 +113,7 @@ export default function BookingForm({ teacher, onClose }: BookingFormProps) {
             />
             Culture, travel or hobby
           </label>
+          <p className={css.error}>{errors.reason?.message}</p>
         </div>
         <div className={css.form}>
           <label className={css.inputBox}>
