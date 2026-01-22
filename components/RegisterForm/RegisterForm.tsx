@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { registerUser } from '@/lib/api';
 import { useAuthStore } from '@/lib/store/authStore';
+import toast from 'react-hot-toast';
 
 const registerSchema = yup.object({
   name: yup
@@ -21,13 +22,17 @@ const registerSchema = yup.object({
     .required('Password is required'),
 });
 
+interface RegisterFormProps {
+  onClose: () => void
+}
+
 interface RegisterFormValues {
   name: string;
   email: string;
   password: string;
 }
 
-export default function RegisterForm() {
+export default function RegisterForm({onClose}:RegisterFormProps) {
   const {
     register,
     handleSubmit,
@@ -56,7 +61,10 @@ export default function RegisterForm() {
       localId: user.localId,
       displayName: user.displayName || data.name,
     });
+    
+    toast.success('You successfully registered!', {position: 'top-center'})
     reset();
+    onClose();
   };
 
   return (

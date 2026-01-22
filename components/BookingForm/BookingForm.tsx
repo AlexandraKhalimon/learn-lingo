@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { Teacher } from '@/types/teacher';
 import Image from 'next/image';
+import toast from 'react-hot-toast';
 
 const bookingSchema = yup.object({
   reason: yup.string().required('Please select a reason'),
@@ -28,16 +29,25 @@ interface BookingFormValues {
 
 interface BookingFormProps {
   teacher: Teacher;
+  onClose: () => void;
 }
 
-export default function BookingForm({ teacher }: BookingFormProps) {
+export default function BookingForm({ teacher, onClose }: BookingFormProps) {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<BookingFormValues>({
     resolver: yupResolver(bookingSchema),
   });
+
+  const onSubmit = async () => {
+    toast.success('Lesson is booked! Teacher will contact you later.',{position:'top-center'});
+    reset();
+    onClose();
+}
+
   return (
     <>
       <div>
@@ -62,7 +72,7 @@ export default function BookingForm({ teacher }: BookingFormProps) {
           </h6>
         </div>
       </div>
-      <form onSubmit={handleSubmit((data) => console.log(data))}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h4 className={css.question}>
           What is your main reason for learning English?
         </h4>

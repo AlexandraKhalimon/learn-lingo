@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { useAuthStore } from '@/lib/store/authStore';
 import { loginUser } from '@/lib/api';
+import toast from 'react-hot-toast';
 
 const loginSchema = yup.object({
   email: yup
@@ -17,12 +18,16 @@ const loginSchema = yup.object({
     .required('Password is required'),
 });
 
+interface LoginFormProps {
+  onClose: () => void
+}
+
 interface LoginFormValues {
   email: string;
   password: string;
 }
 
-export default function LoginForm() {
+export default function LoginForm({onClose}:LoginFormProps) {
   const {
     register,
     handleSubmit,
@@ -46,7 +51,10 @@ export default function LoginForm() {
       localId: user.localId,
       displayName: user.displayName,
     });
+
+    toast.success('You logged in. Welcome back!',{position: 'top-center'})
     reset();
+    onClose();
   };
 
   return (

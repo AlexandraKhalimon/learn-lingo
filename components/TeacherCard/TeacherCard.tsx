@@ -9,7 +9,7 @@ import Modal from '../Modal/Modal';
 import BookingForm from '../BookingForm/BookingForm';
 import { useFavoritesStore } from '@/lib/store/favoritesStore';
 import { useAuthStore } from '@/lib/store/authStore';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 interface Props {
   teacher: Teacher;
@@ -39,7 +39,6 @@ export default function TeachersCard({ teacher }: Props) {
 
   return (
     <div className={css.card}>
-      <Toaster position="top-right" reverseOrder={false} />
       <div className={css.avatar}>
         <Image
           src={teacher.avatar_url}
@@ -144,7 +143,7 @@ export default function TeachersCard({ teacher }: Props) {
         )}
         {isBookingOpen && (
           <Modal onClose={() => setIsBookingOpen(false)}>
-            <BookingForm teacher={teacher} />
+            <BookingForm teacher={teacher} onClose={()=>setIsBookingOpen(false)}/>
           </Modal>
         )}
       </div>

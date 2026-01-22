@@ -45,7 +45,7 @@ export default function Header() {
             </button>
             {isLoginOpen && (
               <Modal onClose={() => setIsLoginOpen(false)}>
-                <LoginForm />
+                <LoginForm onClose={()=>setIsLoginOpen(false)}/>
               </Modal>
             )}
             <button
@@ -56,7 +56,7 @@ export default function Header() {
             </button>
             {isRegisterOpen && (
               <Modal onClose={() => setIsRegisterOpen(false)}>
-                <RegisterForm />
+                <RegisterForm onClose={()=>setIsRegisterOpen(false)}/>
               </Modal>
             )}
           </>
