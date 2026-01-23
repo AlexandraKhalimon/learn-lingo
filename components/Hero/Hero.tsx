@@ -24,6 +24,7 @@ export default function Hero() {
           alt="Girl with a computer"
           width={568}
           height={530}
+          loading='eager'
         />
       </div>
       <ul className={css.list}>
